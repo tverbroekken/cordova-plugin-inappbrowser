@@ -886,7 +886,7 @@
 	NSString *urlStr = [NSString stringWithFormat:@"%@", request.URL];
 	NSString *lowerUrlStr = [urlStr lowercaseString];
 
-	if ([validNames indexOfObject:urlStr].location != NSNotFound)
+	if ([validNames indexOfObject:lowerUrlStr].location != NSNotFound)
 	{
 		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlStr]];
 
