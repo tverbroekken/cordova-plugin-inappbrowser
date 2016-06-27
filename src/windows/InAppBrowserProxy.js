@@ -115,10 +115,12 @@ var IAB = {
             }
         });
     },
-	hide: function (win, lose) {
-        if (browserWrap) {
-            browserWrap.style.display = "none";
-        }
+    hide: function (win, lose) {
+    	setImmediate(function () {
+          if (browserWrap) {
+              browserWrap.style.display = "none";
+          }
+        });	  
     },	
     open: function (win, lose, args) {
         // make function async so that we can add navigation events handlers before view is loaded and navigation occured
