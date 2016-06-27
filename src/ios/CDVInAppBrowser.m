@@ -881,17 +881,12 @@
         self.currentURL = request.URL;
     }
 	
-	NSString *domainStr = [NSString stringWithFormat:@"schrauwen"];
 	NSString *urlStr = [NSString stringWithFormat:@"%@", request.URL];
 	NSString *lowerUrlStr = [urlStr lowercaseString];
-	NSRange result = [lowerUrlStr rangeOfString:domainStr];
 
 	if (!([lowerUrlStr rangeOfString:@"barcodescanner"].location != NSNotFound || [lowerUrlStr rangeOfString:@"externallink"].location != NSNotFound || [lowerUrlStr rangeOfString:@"back"].location != NSNotFound)) {
-		if(result.location == NSNotFound) {
-			[[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlStr]];
-
-			return NO;
-		}
+		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlStr]];
+		return NO;
 	}	
 	
     return [self.navigationDelegate webView:theWebView shouldStartLoadWithRequest:request navigationType:navigationType];
