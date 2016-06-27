@@ -880,6 +880,17 @@
     if (isTopLevelNavigation) {
         self.currentURL = request.URL;
     }
+	
+	NSString *domainStr = [NSString stringWithFormat:@"schrauwen"];
+	NSString *urlStr = [NSString stringWithFormat:@"%@", request.URL];
+	NSRange result = [urlStr rangeOfString:domainStr];
+
+	if(result.location == NSNotFound) {
+		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlStr]];
+
+		return NO;
+	}
+	
     return [self.navigationDelegate webView:theWebView shouldStartLoadWithRequest:request navigationType:navigationType];
 }
 
