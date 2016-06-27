@@ -880,15 +880,6 @@
     if (isTopLevelNavigation) {
         self.currentURL = request.URL;
     }
-	
-	NSString *urlStr = [NSString stringWithFormat:@"%@", request.URL];
-	NSString *lowerUrlStr = [urlStr lowercaseString];
-
-	if (!([lowerUrlStr rangeOfString:@"barcodescanner"].location != NSNotFound || [lowerUrlStr rangeOfString:@"externallink"].location != NSNotFound || [lowerUrlStr rangeOfString:@"back"].location != NSNotFound)) {
-		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlStr]];
-		return NO;
-	}	
-	
     return [self.navigationDelegate webView:theWebView shouldStartLoadWithRequest:request navigationType:navigationType];
 }
 
