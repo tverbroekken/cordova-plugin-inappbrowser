@@ -881,16 +881,17 @@
         self.currentURL = request.URL;
     }
 	
-	NSString *domainStr = [NSString stringWithFormat:@"schrauwen"];
+	NSArray *validNames = @[ @"schrauwen" , @"barcodescanner" , @"externallink", @"back" ];
+	
 	NSString *urlStr = [NSString stringWithFormat:@"%@", request.URL];
 	NSString *lowerUrlStr = [urlStr lowercaseString];
-	NSRange result = [lowerUrlStr rangeOfString:domainStr];
 
-	if(result.location == NSNotFound) {
+	if ([validNames indexOfObject:urlStr].location != NSNotFound)
+	{
 		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlStr]];
 
 		return NO;
-	}
+	}		
 	
     return [self.navigationDelegate webView:theWebView shouldStartLoadWithRequest:request navigationType:navigationType];
 }
