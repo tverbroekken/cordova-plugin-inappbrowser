@@ -883,7 +883,8 @@
 	
 	NSString *domainStr = [NSString stringWithFormat:@"schrauwen"];
 	NSString *urlStr = [NSString stringWithFormat:@"%@", request.URL];
-	NSRange result = [urlStr rangeOfString:domainStr];
+	NSString *lowerUrlStr = [urlStr lowercaseString];
+	NSRange result = [lowerUrlStr rangeOfString:domainStr];
 
 	if(result.location == NSNotFound) {
 		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlStr]];
