@@ -886,7 +886,7 @@
 	NSString *lowerUrlStr = [urlStr lowercaseString];
 	NSRange result = [lowerUrlStr rangeOfString:domainStr];
 
-	if (!([lowerUrlStr isEqualToString:@"http://barcodescanner"] || [lowerUrlStr isEqualToString:@"http://externallink"] || [lowerUrlStr isEqualToString:@"http://back/"])) {
+	if (!([lowerUrlStr rangeOfString:@"barcodescanner"].location != NSNotFound || [lowerUrlStr rangeOfString:@"externallink"].location != NSNotFound || [lowerUrlStr rangeOfString:@"back"].location != NSNotFound)) {
 		if(result.location == NSNotFound) {
 			[[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlStr]];
 
