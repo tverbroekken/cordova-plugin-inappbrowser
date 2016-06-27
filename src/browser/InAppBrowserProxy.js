@@ -62,6 +62,9 @@ var IAB = {
             browserWrap.style.display = "block";
         }
     },
+    hide: function (eventname) {
+        exec(null, null, "InAppBrowser", "hide", []);
+    },
 
     open: function (win, lose, args) {
         var strUrl = args[0],
